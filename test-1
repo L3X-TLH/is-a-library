@@ -75,10 +75,10 @@ function Library:CreateFrame(name)
 		if Hide.Text == "-" then
 			Hide.Text = "+"
 			local cs = Main.Size
-			Hide:TweenSize(UDim2.new(0, 194, 0, 108), 'In', 'Sine', 0.3, true)
+			Main:TweenSize(UDim2.new(0, 194, 0, 108), 'In', 'Sine', 0.3, true)
 		else
 			Hide.Text = "-"
-			Hide:TweenSize(UDim2.new(cs), 'In', 'Sine', 0.3, true)
+			Main:TweenSize(UDim2.new(cs), 'In', 'Sine', 0.3, true)
 		end
 	end)
 	
