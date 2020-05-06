@@ -71,6 +71,17 @@ function Library:CreateFrame(name)
 	Title.TextColor3 = Color3.fromRGB(255, 255, 255)
 	Title.TextSize = 24.000
 	
+	Hide.MouseButton1Click:connect(function()
+		if Hide.Text == "-" then
+			Hide.Text = "+"
+			local cs = Main.Size
+			Hide:TweenSize(UDim2.new(0, 194, 0, 108), 'In', 'Sine', 0.3, true)
+		else
+			Hide.Text = "-"
+			Hide:TweenSize(UDim2.new(cs), 'In', 'Sine', 0.3, true)
+		end
+	end)
+	
 	local TLHLibrary = {}
 	
 	function TLHLibrary:NewButton(name)
