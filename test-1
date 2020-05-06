@@ -74,8 +74,8 @@ function Library:CreateMain()
 	Title.BackgroundTransparency = 1.000
 	Title.Position = UDim2.new(0, 0, -0.0399999619, 0)
 	Title = UDim2.new(0, 194, 0, 25)
-	Title.Font = Enum.Font.SourceSansBold
 	Title.Text = "FrameName"
+	Title.Font = Enum.Font.SourceSansBold
 	Title.TextColor3 = Color3.fromRGB(255, 255, 255)
 	Title.TextSize = 24.000
 	
