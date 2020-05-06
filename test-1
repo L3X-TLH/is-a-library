@@ -6,7 +6,6 @@ function Library:CreateMain()
 	local Main = Instance.new("Frame")
 	local AAAAAAAAAAAAAA = Instance.new("Frame")
 	local UIListLayout = Instance.new("UIListLayout")
-	local UIListLayout_2 = Instance.new("UIListLayout")
 	local Hide = Instance.new("TextButton")
 	local Up = Instance.new("Frame")
 	local CutFrame = Instance.new("Frame")
@@ -38,11 +37,6 @@ function Library:CreateMain()
 	
 	UIListLayout.Parent = Main
 	UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
-	
-	UIListLayout_2.Parent = TextButtonFrame
-	UIListLayout_2.HorizontalAlignment = Enum.HorizontalAlignment.Center
-	UIListLayout_2.SortOrder = Enum.SortOrder.LayoutOrder
-	UIListLayout_2.VerticalAlignment = Enum.VerticalAlignment.Center
 	
 	Hide.Name = "Hide"
 	Hide.Parent = Frame
@@ -84,6 +78,7 @@ function Library:CreateMain()
 	function TLHLibrary:NewButton(name)
 		local TextButtonFrame = Instance.new("Frame")
 		local TextButton = Instance.new("TextButton")
+		local UIListLayout_2 = Instance.new("UIListLayout")
 		
 		TextButtonFrame.Name = "TextButtonFrame"
 		TextButtonFrame.Parent = Main
@@ -99,6 +94,11 @@ function Library:CreateMain()
 		TextButton.Text = "TextButton"
 		TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 		TextButton.TextSize = 18.000
+		
+		UIListLayout_2.Parent = TextButtonFrame
+		UIListLayout_2.HorizontalAlignment = Enum.HorizontalAlignment.Center
+		UIListLayout_2.SortOrder = Enum.SortOrder.LayoutOrder
+		UIListLayout_2.VerticalAlignment = Enum.VerticalAlignment.Center
 	end
 	
 	function TLHLibrary:NewLabel(name)
