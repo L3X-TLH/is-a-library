@@ -3,6 +3,7 @@ local Library = {}
 function Library:CreateFrame(name)
 	local ScreenGui = Instance.new("ScreenGui")
 	local Out = Instance.new("Frame")
+	local UIListLayoutOut = Instance.new("UIListLayout")
 	local Frame = Instance.new("Frame")
 	local Main = Instance.new("Frame")
 	local AAAAAAAAAAAAAA = Instance.new("Frame")
@@ -11,6 +12,7 @@ function Library:CreateFrame(name)
 	local Up = Instance.new("Frame")
 	local CutFrame = Instance.new("Frame")
 	local Title = Instance.new("TextLabel")
+	local UIListLayoutOut = Instance.new("UIListLayout")
 	
 	ScreenGui.Parent = game.CoreGui
 	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
@@ -20,6 +22,10 @@ function Library:CreateFrame(name)
 	Out.BackgroundTransparency = 1.000
 	Out.Position = UDim2.new(0.0114583336, 0, 0.0170648471, 0)
 	Out.Size = UDim2.new(0, 1880, 0, 24)
+	
+	UIListLayoutOut.Parent = Out
+	UIListLayoutOut.FillDirection = Enum.FillDirection.Horizontal
+	UIListLayoutOut.SortOrder = Enum.SortOrder.LayoutOrder
 	
 	Frame.Parent = Out
 	Frame.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
