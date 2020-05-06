@@ -2,6 +2,7 @@ local Library = {}
 
 function Library:CreateFrame(name)
 	local ScreenGui = Instance.new("ScreenGui")
+	local Out = Instance.new("Frame")
 	local Frame = Instance.new("Frame")
 	local Main = Instance.new("Frame")
 	local AAAAAAAAAAAAAA = Instance.new("Frame")
@@ -14,7 +15,13 @@ function Library:CreateFrame(name)
 	ScreenGui.Parent = game.CoreGui
 	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 	
-	Frame.Parent = ScreenGui
+	Out.Parent = game.StarterGui.ScreenGui
+	Out.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Out.BackgroundTransparency = 1.000
+	Out.Position = UDim2.new(0.0114583336, 0, 0.0170648471, 0)
+	Out.Size = UDim2.new(0, 1880, 0, 24)
+	
+	Frame.Parent = Out
 	Frame.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
 	Frame.BorderSizePixel = 0
 	Frame.ClipsDescendants = true
