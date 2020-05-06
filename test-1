@@ -73,9 +73,9 @@ function Library:CreateMain()
 	Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	Title.BackgroundTransparency = 1.000
 	Title.Position = UDim2.new(0, 0, -0.0399999619, 0)
-	Title = UDim2.new(0, 194, 0, 25)
-	Title.Text = "FrameName"
+	Title.Size = UDim2.new(0, 194, 0, 25)
 	Title.Font = Enum.Font.SourceSansBold
+	Title.Text = "FrameName"
 	Title.TextColor3 = Color3.fromRGB(255, 255, 255)
 	Title.TextSize = 24.000
 	
@@ -96,7 +96,7 @@ function Library:CreateMain()
 		TextButton.BorderSizePixel = 0
 		TextButton.Size = UDim2.new(0, 182, 0, 20)
 		TextButton.Font = Enum.Font.SourceSansBold
-		TextButton.Text = "name"
+		TextButton.Text = "TextButton"
 		TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 		TextButton.TextSize = 18.000
 	end
@@ -112,7 +112,7 @@ function Library:CreateMain()
 		TextLabel.Selectable = true
 		TextLabel.Size = UDim2.new(0, 194, 0, 20)
 		TextLabel.Font = Enum.Font.SourceSansBold
-		TextLabel.Text = "name"
+		TextLabel.Text = "TextLabel"
 		TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 		TextLabel.TextSize = 18.000
 	end
@@ -128,7 +128,7 @@ function Library:CreateMain()
 		TextBox.Size = UDim2.new(0, 194, 0, 20)
 		TextBox.Font = Enum.Font.SourceSansBold
 		TextBox.PlaceholderColor3 = Color3.fromRGB(188, 188, 188)
-		TextBox.PlaceholderText = "name"
+		TextBox.PlaceholderText = "TextBox"
 		TextBox.Text = ""
 		TextBox.TextColor3 = Color3.fromRGB(188, 188, 188)
 		TextBox.TextSize = 18.000
