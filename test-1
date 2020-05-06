@@ -19,7 +19,7 @@ function Library:CreateFrame(name)
 	Frame.BorderSizePixel = 0
 	Frame.ClipsDescendants = true
 	Frame.Position = UDim2.new(0.432812512, 0, 0.39231962, 0)
-	Frame.Size = UDim2.new(0, 194, 0, 108)
+	Frame.Size = UDim2.new(0, 194, 0, 25)
 	
 	Main.Name = "Main"
 	Main.Parent = Frame
