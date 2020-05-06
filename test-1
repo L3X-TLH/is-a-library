@@ -15,7 +15,7 @@ function Library:CreateFrame(name)
 	ScreenGui.Parent = game.CoreGui
 	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 	
-	Out.Parent = game.StarterGui.ScreenGui
+	Out.Parent = ScreenGui
 	Out.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	Out.BackgroundTransparency = 1.000
 	Out.Position = UDim2.new(0.0114583336, 0, 0.0170648471, 0)
