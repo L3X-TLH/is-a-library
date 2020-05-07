@@ -40,8 +40,6 @@ function Library:CreateFrame(name)
 	UIListLayout_2.Parent = Frame_2
 	UIListLayout_2.SortOrder = Enum.SortOrder.LayoutOrder
 	UIListLayout_2.VerticalAlignment = Enum.VerticalAlignment.Center
-	wait()
-	UIListLayout_2:Destroy()
 	
 	Frame_3.Parent = Frame_2
 	Frame_3.Name = name
@@ -150,6 +148,9 @@ function Library:CreateFrame(name)
 	update(input)
 	end
 	end)
+	
+	wait()
+	UIListLayout_3:Destroy()
 	
 	local TLHLibrary = {}
 	
