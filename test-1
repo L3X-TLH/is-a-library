@@ -162,4 +162,7 @@ function Library:CreateFrame(name)
 		TextBox.TextColor3 = Color3.fromRGB(188, 188, 188)
 		TextBox.TextSize = 18.000
 	end
+	
+	return TLHLibrary;
 end
+return Library;
