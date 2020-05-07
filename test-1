@@ -102,10 +102,10 @@ function Library:CreateFrame(name)
 	Hide.MouseButton1Click:connect(function()
 		if Hide.Text == "-" then
 			Hide.Text = "+"
-			Frame:TweenSize(UDim2.new(0, 194, 0, 108), 'In', 'Sine', 0.3, true)
+			Frame_3.Name:TweenSize(UDim2.new(0, 194, 0, 108), 'In', 'Sine', 0.3, true)
 		else
 			Hide.Text = "-"
-			Frame:TweenSize(UDim2.new(0, 194, 0, 25), 'In', 'Sine', 0.3, true)
+			Frame_3.Name:TweenSize(UDim2.new(0, 194, 0, 25), 'In', 'Sine', 0.3, true)
 		end
 	end)
 	
