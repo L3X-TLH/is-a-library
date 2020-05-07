@@ -111,7 +111,7 @@ function Library:CreateFrame(name)
 	
 	local UserInputService = game:GetService("UserInputService")
 	
-	local gui = Frame_3
+	local gui = Frame_2
 	
 	local dragging
 	local dragInput
