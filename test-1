@@ -151,7 +151,9 @@ function Library:CreateFrame(name)
 	
 	local TLHLibrary = {}
 	
-	function TLHLibrary:NewButton(name)
+	function TLHLibrary:NewButton(name, callback)
+		local callback = callback or function() end)
+		
 		local TextButtonFrame = Instance.new("Frame")
 		local TextButton = Instance.new("TextButton")
 		local UIListLayout_4 = Instance.new("UIListLayout")
@@ -176,6 +178,10 @@ function Library:CreateFrame(name)
 		UIListLayout_4.HorizontalAlignment = Enum.HorizontalAlignment.Center
 		UIListLayout_4.SortOrder = Enum.SortOrder.LayoutOrder
 		UIListLayout_4.VerticalAlignment = Enum.VerticalAlignment.Center
+		
+		TextButton.MouseButton1Click:connect(function()
+			pcall(callback)
+		end)
 	end
 	
 	function TLHLibrary:NewLabel(name)
