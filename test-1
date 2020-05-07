@@ -100,17 +100,17 @@ function Library:CreateFrame(name)
 	UIListLayout_3.HorizontalAlignment = Enum.HorizontalAlignment.Center
 	
 	Hide.MouseButton1Click:connect(function()
-		if Hide.Text == "-" then
-			Hide.Text = "+"
+		if Hide.Text == "+" then
+			Hide.Text = "-"
 			Frame_3:TweenSize(UDim2.new(0, 194, 0, 108), 'In', 'Sine', 0.3, true)
 		else
-			Hide.Text = "-"
+			Hide.Text = "+"
 			Frame_3:TweenSize(UDim2.new(0, 194, 0, 25), 'In', 'Sine', 0.3, true)
 		end
 	end)
 	
 	local UserInputService = game:GetService("UserInputService")
-	
+
 	local gui = Frame_2
 	
 	local dragging
