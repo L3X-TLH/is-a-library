@@ -152,7 +152,7 @@ function Library:CreateFrame(name)
 	local TLHLibrary = {}
 	
 	function TLHLibrary:NewButton(name, callback)
-		local callback = callback or function() end)
+		local callback = callback or function() end
 		
 		local TextButtonFrame = Instance.new("Frame")
 		local TextButton = Instance.new("TextButton")
