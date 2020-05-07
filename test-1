@@ -98,6 +98,8 @@ function Library:CreateFrame(name)
 	
 	UIListLayout_3.Parent = Main
 	UIListLayout_3.HorizontalAlignment = Enum.HorizontalAlignment.Center
+	wait()
+	UIListLayout_3:Destroy()
 	
 	Hide.MouseButton1Click:connect(function()
 		if Hide.Text == "+" then
