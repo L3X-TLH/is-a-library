@@ -1,227 +1,340 @@
-local ScreenGui = Instance.new("ScreenGui")
-local Frame = Instance.new("Frame")
-local UIListLayout = Instance.new("UIListLayout")
+for _, v in pairs(game.CoreGui:GetChildren()) do
+	if v.Name == "TLHUI" then
+		v:Destroy()
+	end
+end
 
-ScreenGui.Parent = game.CoreGui
-ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+local TLHUI = Instance.new("ScreenGui")
 
-Frame.Parent = ScreenGui
-Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Frame.BackgroundTransparency = 1.000
-Frame.Position = UDim2.new(0.010416667, 0, 0.0227531288, 0)
-Frame.Size = UDim2.new(0, 1880, 0, 24)
+TLHUI.Name = "TLHUI"
+TLHUI.Parent = game.CoreGui
 
-UIListLayout.Parent = Frame
-UIListLayout.FillDirection = Enum.FillDirection.Horizontal
-UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+local function getNextWindowPos()
+	local biggest = 0;
+	local ok = nil;
+	for i, v in pairs(MinecraftUI:GetChildren()) do
+		if v.Position.X.Offset > biggest then
+			biggest = v.Position.X.Offset
+			ok = v;
+		end
+	end
+	if biggest == 0 then
+		biggest = biggest + 5;
+	else
+		biggest = biggest + ok.Size.X.Offset + 5;
+	end
+	
+	return biggest;
+end
 
+local Library = {}
 
-local Library = {} 
+function Library:Frame(name)
+  local Frame = Instance.new("Frame")
+  local Title = Instance.new("TextLabel")
+  local Hide = Instance.new("TextButton")
+  local CutFrame = Instance.new("Frame")
+  local Container = Instance.new("Frame")
+  local UIListLayout = Instance.new("UIListLayout")
 
-function Library:CreateFrame(name)
-	local Frame_2 = Instance.new("Frame")
-	local UIListLayout_2 = Instance.new("UIListLayout")
-	local Frame_3 = Instance.new("Frame")
-	local Main = Instance.new("Frame")
-	local Up = Instance.new("Frame")
-	local CutFrame = Instance.new("Frame")
-	local Ttitle = Instance.new("TextLabel")
-	local Hide = Instance.new("TextButton")
-	local AAAAAAAAAAAAAA = Instance.new("Frame")
-	local UIListLayout_3 = Instance.new("UIListLayout")
-	
-	Frame_2.Parent = Frame
-	Frame_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Frame_2.BackgroundTransparency = 1.000
-	Frame_2.BorderSizePixel = 0
-	Frame_2.Position = UDim2.new(0.0114583336, 0, 0.01592719, 0)
-	Frame_2.Size = UDim2.new(0, 220, 0, 108)
-	
-	UIListLayout_2.Parent = Frame_2
-	UIListLayout_2.SortOrder = Enum.SortOrder.LayoutOrder
-	UIListLayout_2.VerticalAlignment = Enum.VerticalAlignment.Center
-	
-	Frame_3.Parent = Frame_2
-	Frame_3.Name = name
-	Frame_3.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
-	Frame_3.BorderSizePixel = 0
-	Frame_3.ClipsDescendants = true
-	Frame_3.Position = UDim2.new(0.432812512, 0, 0.39231962, 0)
-	Frame_3.Size = UDim2.new(0, 194, 0, 109)
-	
-	Main.Name = "Main"
-	Main.Parent = Frame_3
-	Main.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
-	Main.BackgroundTransparency = 1.000
-	Main.Size = UDim2.new(0, 194, 0, 108)
-	
-	Up.Name = "Up"
-	Up.Parent = Frame_3
-	Up.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Up.BackgroundTransparency = 1.000
-	Up.Size = UDim2.new(0, 194, 0, 25)
-	
-	CutFrame.Name = "CutFrame"
-	CutFrame.Parent = Up
-	CutFrame.BackgroundColor3 = Color3.fromRGB(255, 102, 0)
-	CutFrame.BorderSizePixel = 0
-	CutFrame.Position = UDim2.new(0, 0, 0.96757412, 0)
-	CutFrame.Size = UDim2.new(0, 194, 0, 1)
-	
-	Ttitle.Name = "Ttitle"
-	Ttitle.Parent = Up
-	Ttitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Ttitle.BackgroundTransparency = 1.000
-	Ttitle.Position = UDim2.new(0, 0, -0.0399999619, 0)
-	Ttitle.Size = UDim2.new(0, 194, 0, 25)
-	Ttitle.Font = Enum.Font.SourceSansBold
-	Ttitle.Text = name
-	Ttitle.TextColor3 = Color3.fromRGB(255, 255, 255)
-	Ttitle.TextSize = 24.000
-	
-	Hide.Name = "Hide"
-	Hide.Parent = Frame_3
-	Hide.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Hide.BackgroundTransparency = 1.000
-	Hide.Position = UDim2.new(0.871134043, 0, -0.00152168889, 0)
-	Hide.Size = UDim2.new(0, 25, 0, 25)
-	Hide.Font = Enum.Font.SourceSansBold
-	Hide.Text = "-"
-	Hide.TextColor3 = Color3.fromRGB(255, 255, 255)
-	Hide.TextSize = 23.000
-	
-	AAAAAAAAAAAAAA.Name = "AAAAAAAAAAAAAA"
-	AAAAAAAAAAAAAA.Parent = Main
-	AAAAAAAAAAAAAA.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	AAAAAAAAAAAAAA.BackgroundTransparency = 1.000
-	AAAAAAAAAAAAAA.Size = UDim2.new(0, 194, 0, 32)
-	
-	UIListLayout_3.Parent = Main
-	UIListLayout_3.HorizontalAlignment = Enum.HorizontalAlignment.Center
-	
-	Hide.MouseButton1Click:connect(function()
-		if Hide.Text == "+" then
-			Hide.Text = "-"
-			Frame_3:TweenSize(UDim2.new(0, 194, 0, 108), 'In', 'Sine', 0.3, true)
+  Frame.Parent = ScreenGui
+  Frame.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
+  Frame.BorderSizePixel = 0
+  Frame.Position = UDim2.new(0.0151041448, 0, 0.0203059614, 0)
+  Frame.Size = UDim2.new(0, 149, 0, 26)
+
+  Title.Name = "Title"
+  Title.Parent = Frame
+  Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+  Title.BackgroundTransparency = 1.000
+  Title.Position = UDim2.new(-0.00671140943, 0, 0.0357142948, 0)
+  Title.Size = UDim2.new(0, 149, 0, 23)
+  Title.Font = Enum.Font.SourceSansBold
+  Title.Text = name
+  Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+  Title.TextSize = 24.000
+
+  Hide.Name = "Hide"
+  Hide.Parent = Frame
+  Hide.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+  Hide.BackgroundTransparency = 1.000
+  Hide.Position = UDim2.new(0.837576866, 0, 0, 0)
+  Hide.Size = UDim2.new(0, 24, 0, 24)
+  Hide.Font = Enum.Font.SourceSansBold
+  Hide.Text = "-"
+  Hide.TextColor3 = Color3.fromRGB(255, 255, 255)
+  Hide.TextSize = 23.000
+  Hide.MouseButton1Down:connect(function()
+		if visible == true then
+			Container:TweenSize(UDim2.fromScale(1, 0))
+			for _, v in pairs(Container:GetChildren()) do
+				if v:IsA("Frame") then
+					v:TweenSize(UDim2.new(1, 0, 0, 0))
+				end
+			end
+			game:GetService("TweenService"):Create(Hide, TweenInfo.new(1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out))
 		else
-			Hide.Text = "+"
-			Frame_3:TweenSize(UDim2.new(0, 194, 0, 25), 'In', 'Sine', 0.3, true)
+			Container:TweenSize(UDim2.fromScale(1, 1))
+			for _, v in pairs(Container:GetChildren()) do
+				if v:IsA("Frame") then
+					v:TweenSize(UDim2.new(1, 0, 0, 26))
+				end
+			end
+			game:GetService("TweenService"):Create(Hide, TweenInfo.new(1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out))
 		end
 	end)
-	
-	local UserInputService = game:GetService("UserInputService")
 
-	local gui = Frame_2
-	
-	local dragging
-	local dragInput
-	local dragStart
-	local startPos
-	
-	local function update(input)
-	local delta = input.Position - dragStart
-	gui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
-	end
-	
-	gui.InputBegan:Connect(function(input)
-	if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-	dragging = true
-	dragStart = input.Position
-	startPos = gui.Position
-	
-	input.Changed:Connect(function()
-	if input.UserInputState == Enum.UserInputState.End then
-	dragging = false
-	end
-	end)
-	end
-	end)
-	
-	gui.InputChanged:Connect(function(input)
-	if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
-	dragInput = input
-	end
-	end)
-	
-	UserInputService.InputChanged:Connect(function(input)
-	if input == dragInput and dragging then
-	update(input)
-	end
-	end)
-	
-	wait()
-	UIListLayout_3:Destroy()
-	
-	local TLHLibrary = {}
-	
-	function TLHLibrary:NewButton(name, callback)
-		local callback = callback or function() end
-		
-		local TextButtonFrame = Instance.new("Frame")
-		local TextButton = Instance.new("TextButton")
-		local UIListLayout_4 = Instance.new("UIListLayout")
-		
-		TextButtonFrame.Name = "TextButtonFrame"
-		TextButtonFrame.Parent = Main
-		TextButtonFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-		TextButtonFrame.BackgroundTransparency = 1.000
-		TextButtonFrame.Size = UDim2.new(0, 194, 0, 30)
-		
-		TextButton.Parent = TextButtonFrame
-		TextButton.Name = name
-		TextButton.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-		TextButton.BorderSizePixel = 0
-		TextButton.Size = UDim2.new(0, 182, 0, 20)
-		TextButton.Font = Enum.Font.SourceSansBold
-		TextButton.Text = name
-		TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-		TextButton.TextSize = 18.000
-		
-		UIListLayout_4.Parent = TextButtonFrame
-		UIListLayout_4.HorizontalAlignment = Enum.HorizontalAlignment.Center
-		UIListLayout_4.SortOrder = Enum.SortOrder.LayoutOrder
-		UIListLayout_4.VerticalAlignment = Enum.VerticalAlignment.Center
-		
-		TextButton.MouseButton1Click:connect(function()
-			pcall(callback)
-		end)
-	end
-	
-	function TLHLibrary:NewLabel(name)
-		local TextLabel = Instance.new("TextLabel")
-		
-		TextLabel.Parent = Main
-		TextLabel.Active = true
-		TextLabel.Name = name
-		TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-		TextLabel.BackgroundTransparency = 1.000
-		TextLabel.Position = UDim2.new(0.0412371121, 0, 0.298913032, 0)
-		TextLabel.Selectable = true
-		TextLabel.Size = UDim2.new(0, 194, 0, 20)
-		TextLabel.Font = Enum.Font.SourceSansBold
-		TextLabel.Text = name
-		TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-		TextLabel.TextSize = 18.000
-	end
-	
-	function TLHLibrary:NewTextBox(name)
-		local TextBox = Instance.new("TextBox")
-		
-		TextBox.Parent = Main
-		TextBox.Name = name
-		TextBox.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
-		TextBox.BorderColor3 = Color3.fromRGB(48, 48, 48)
-		TextBox.BorderSizePixel = 0
-		TextBox.Position = UDim2.new(0, 0, 0.0869565234, 0)
-		TextBox.Size = UDim2.new(0, 194, 0, 20)
-		TextBox.Font = Enum.Font.SourceSansBold
-		TextBox.PlaceholderColor3 = Color3.fromRGB(188, 188, 188)
-		TextBox.PlaceholderText = name
-		TextBox.Text = ""
-		TextBox.TextColor3 = Color3.fromRGB(188, 188, 188)
-		TextBox.TextSize = 18.000
-	end
-	
-	return TLHLibrary;
+  CutFrame.Name = "CutFrame"
+  CutFrame.Parent = Frame
+  CutFrame.BackgroundColor3 = Color3.fromRGB(255, 102, 0)
+  CutFrame.BorderSizePixel = 0
+  CutFrame.Position = UDim2.new(0, 0, 0.969988346, 0)
+  CutFrame.Size = UDim2.new(0, 149, 0, 1)
+
+  Container.Name = "Container"
+  Container.Parent = Frame
+  Container.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
+  Container.BorderSizePixel = 0
+  Container.ClipsDescendants = true
+  Container.Position = UDim2.new(0, 0, 1, 0)
+  Container.Size = UDim2.new(1, 0, 6.30769253, 0)
+
+  UIListLayout.Parent = Container
+  UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+  UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+
+  local script = Instance.new('LocalScript', Frame)
+
+  local UserInputService = game:GetService("UserInputService")
+
+  local gui = script.Parent
+
+  local dragging
+  local dragInput
+  local dragStart
+  local startPos
+
+  local function update(input)
+  local delta = input.Position - dragStart
+  gui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+  end
+
+  gui.InputBegan:Connect(function(input)
+  if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+  dragging = true
+  dragStart = input.Position
+  startPos = gui.Position
+
+  input.Changed:Connect(function()
+  if input.UserInputState == Enum.UserInputState.End then
+  dragging = false
+  end
+  end)
+  end
+  end)
+
+  gui.InputChanged:Connect(function(input)
+  if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+  dragInput = input
+  end
+  end)
+
+  UserInputService.InputChanged:Connect(function(input)
+  if input == dragInput and dragging then
+  update(input)
+  end
+  end)
+
+  local TLHLibrary = {}
+
+  function TLHLibrary:Button(name, callback)
+    local ButtonFrame = Instance.new("Frame")
+    local TextButton = Instance.new("TextButton")
+
+    ButtonFrame.Name = "ButtonFrame"
+    ButtonFrame.Parent = Container
+    ButtonFrame.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+    ButtonFrame.BorderSizePixel = 0
+    ButtonFrame.Position = UDim2.new(-0.00671140943, 0, 0, 0)
+    ButtonFrame.Size = UDim2.new(0, 151, 0, 27)
+
+    TextButton.Parent = ButtonFrame
+    TextButton.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
+    TextButton.BorderSizePixel = 0
+    TextButton.Position = UDim2.new(0.0240000002, 0, 0.140000001, 0)
+    TextButton.Size = UDim2.new(0, 142, 0, 19)
+    TextButton.Font = Enum.Font.SourceSansBold
+    TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+    TextButton.TextSize = 16.000
+    TextButton.TextWrapped = true
+    TextButton.Text = name
+    TextButton.MouseButton1Click:connect(function()
+      callback()
+    end)
+  end
+
+  function TLHLibrary:Label(name)
+    local TextLabel = Instance.new("TextLabel")
+
+    TextLabel.Parent = Container
+    TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    TextLabel.BackgroundTransparency = 1.000
+    TextLabel.Position = UDim2.new(0.0927152336, 0, 3.42307687, 0)
+    TextLabel.Size = UDim2.new(0, 151, 0, 26)
+    TextLabel.Font = Enum.Font.SourceSansBold
+    TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+    TextLabel.TextSize = 16.000
+    TextLabel.Text = name
+  end
+
+  function TLHLibrary:Toggle(name, callback)
+    local Enabled = false
+    
+    local ToggleFrame = Instance.new("Frame")
+    local ToggleButton = Instance.new("TextButton")
+    local ToggleLabel = Instance.new("TextLabel")
+
+    ToggleFrame.Name = "ToggleFrame"
+    ToggleFrame.Parent = Container
+    ToggleFrame.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
+    ToggleFrame.BackgroundTransparency = 1.000
+    ToggleFrame.Position = UDim2.new(-0.00671140943, 0, 0, 0)
+    ToggleFrame.Size = UDim2.new(0, 151, 0, 26)
+    
+    ToggleButton.Name = "ToggleButton"
+    ToggleButton.Parent = ToggleFrame
+    ToggleButton.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
+    ToggleButton.BackgroundTransparency = 1.000
+    ToggleButton.BorderSizePixel = 0
+    ToggleButton.Position = UDim2.new(0.0397351012, 0, 0, 0)
+    ToggleButton.Size = UDim2.new(0, 143, 0, 25)
+    ToggleButton.Font = Enum.Font.SourceSansBold
+    ToggleButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+    ToggleButton.TextSize = 16.000
+    ToggleButton.TextWrapped = true
+    ToggleButton.TextXAlignment = Enum.TextXAlignment.Left
+    ToggleButton.Text = name
+    
+    ToggleLabel.Name = "ToggleLabel"
+    ToggleLabel.Parent = ToggleFrame
+    ToggleLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    ToggleLabel.BackgroundTransparency = 1.000
+    ToggleLabel.Position = UDim2.new(0.774834454, 0, 0, 0)
+    ToggleLabel.Size = UDim2.new(0, 32, 0, 25)
+    ToggleLabel.Font = Enum.Font.SourceSansBold
+    ToggleLabel.Text = "Off"
+    ToggleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+    ToggleLabel.TextSize = 16.000
+    ToggleButton.MouseButton1Click:connect(function()
+      Enabled = not Enabled
+      callback(Enabled)
+      if Enabled == true then
+        ToggleLabel.Text = "On"
+        ToggleLabel.TextColor3 = Color3.fromRGB(255, 102, 0)
+      else
+        if Enabled == false then
+          ToggleLabel.Text = "Off"
+          ToggleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+        end
+      end
+    end)
+
+    function TLHLibrary:Slider(name, minvalue, maxvalue, callback)
+      minvalue = minvalue or 0
+      maxvalue = maxvalue or 100
+
+      callback = callback or function() end
+
+      local mouse = game.Players.LocalPlayer:GetMouse()
+      local uis = game:GetService("UserInputService")
+      local Value;
+    
+      local SliderFrame = Instance.new("Frame")
+      local SliderLabel = Instance.new("TextLabel")
+      local SliderButton = Instance.new("TextButton")
+      local SliderLine = Instance.new("Frame")
+      local SliderValue = Instance.new("TextLabel")
+
+      SliderFrame.Name = "SliderFrame"
+      SliderFrame.Parent = Container
+      SliderFrame.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+      SliderFrame.BorderSizePixel = 0
+      SliderFrame.Position = UDim2.new(-0.00671140943, 0, 0.47560975, 0)
+      SliderFrame.Size = UDim2.new(0, 151, 0, 45)
+      
+      SliderLabel.Name = "SliderLabel"
+      SliderLabel.Parent = SliderFrame
+      SliderLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+      SliderLabel.BackgroundTransparency = 1.000
+      SliderLabel.Position = UDim2.new(0.0397350974, 0, 0, 0)
+      SliderLabel.Size = UDim2.new(0, 77, 0, 25)
+      SliderLabel.Font = Enum.Font.SourceSansBold
+      SliderLabel.Text = name
+      SliderLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+      SliderLabel.TextSize = 16.000
+      SliderLabel.TextXAlignment = Enum.TextXAlignment.Left
+      
+      SliderButton.Name = "SliderButton"
+      SliderButton.Parent = SliderFrame
+      SliderButton.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
+      SliderButton.BorderSizePixel = 0
+      SliderButton.Position = UDim2.new(0.059602648, 0, 0.555555582, 0)
+      SliderButton.Size = UDim2.new(0, 133, 0, 10)
+      SliderButton.Font = Enum.Font.SourceSans
+      SliderButton.Text = ""
+      SliderButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+      SliderButton.TextSize = 14.000
+      
+      SliderLine.Name = "SliderLine"
+      SliderLine.Parent = SliderButton
+      SliderLine.Active = true
+      SliderLine.BackgroundColor3 = Color3.fromRGB(255, 102, 0)
+      SliderLine.BorderSizePixel = 0
+      SliderLine.Selectable = true
+      SliderLine.Size = UDim2.new(0, 0, 0, 10)
+      
+      SliderValue.Name = "SliderValue"
+      SliderValue.Parent = SliderFrame
+      SliderValue.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+      SliderValue.BackgroundTransparency = 1.000
+      SliderValue.Position = UDim2.new(0.774834454, 0, 0, 0)
+      SliderValue.Size = UDim2.new(0, 26, 0, 25)
+      SliderValue.Font = Enum.Font.SourceSansBold
+      SliderValue.Text = "0"
+      SliderValue.TextColor3 = Color3.fromRGB(255, 255, 255)
+      SliderValue.TextSize = 16.000
+      SliderValue.TextXAlignment = Enum.TextXAlignment.Right
+
+      SliderButton.MouseButton1Down:Connect(function()
+          Value = math.floor((((tonumber(maxvalue) - tonumber(minvalue)) / 133) * SliderFrame.AbsoluteSize.X) + tonumber(minvalue)) or 0
+          pcall(function()
+              callback(Value)
+          end)
+          SliderFrame.Size = UDim2.new(0, math.clamp(mouse.X - SliderFrame.AbsolutePosition.X, 0, 133), 0, 10)
+          moveconnection = mouse.Move:Connect(function()
+              SliderValue.Text = Value
+              Value = math.floor((((tonumber(maxvalue) - tonumber(minvalue)) / 133) * SliderFrame.AbsoluteSize.X) + tonumber(minvalue))
+              pcall(function()
+                  callback(Value)
+              end)
+              SliderFrame.Size = UDim2.new(0, math.clamp(mouse.X - SliderFrame.AbsolutePosition.X, 0, 133), 0, 10)
+          end)
+          releaseconnection = uis.InputEnded:Connect(function(Mouse)
+              if Mouse.UserInputType == Enum.UserInputType.MouseButton1 then
+                  Value = math.floor((((tonumber(maxvalue) - tonumber(minvalue)) / 133) * SliderFrame.AbsoluteSize.X) + tonumber(minvalue))
+                  pcall(function()
+                      callback(Value)
+                  end)
+                  SliderFrame.Size = UDim2.new(0, math.clamp(mouse.X - SliderFrame.AbsolutePosition.X, 0, 133), 0, 10)
+                  moveconnection:Disconnect()
+                  releaseconnection:Disconnect()
+              end
+          end)
+      end)
+    end
+  end
+  return TLHLibrary;
+  
 end
+
 return Library;
