@@ -4,6 +4,8 @@ for _, v in pairs(game.CoreGui:GetChildren()) do
 	end
 end
 
+print'lol'
+
 local TLHUI = Instance.new("ScreenGui")
 
 TLHUI.Name = "TLHUI"
