@@ -65,7 +65,8 @@ function Library:Frame(name)
   Hide.TextColor3 = Color3.fromRGB(255, 255, 255)
   Hide.TextSize = 23.000
   Hide.MouseButton1Down:connect(function()
-		if visible == true then
+		if Hide.Text == "-" then
+      Hide.Text = "+"
 			Container:TweenSize(UDim2.fromScale(1, 0))
 			for _, v in pairs(Container:GetChildren()) do
 				if v:IsA("Frame") then
@@ -74,6 +75,7 @@ function Library:Frame(name)
 			end
 			game:GetService("TweenService"):Create(Hide, TweenInfo.new(1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out))
 		else
+      Hide.Text = "-"
 			Container:TweenSize(UDim2.fromScale(1, 1))
 			for _, v in pairs(Container:GetChildren()) do
 				if v:IsA("Frame") then
