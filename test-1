@@ -126,10 +126,13 @@ function Library:Frame(name)
   end
   end)
 
-	y = UIListLayout.AbsoluteContentSize.Y
-	Container.Size = UDim2.new(1, 0, 0, y)
 
   local TLHLibrary = {}
+
+	function TLHLibrary:EndFrame()
+		y = UIListLayout.AbsoluteContentSize.Y
+		Container.Size = UDim2.new(1, 0, 0, y)
+	end
 
   function TLHLibrary:Button(name, callback)
     local ButtonFrame = Instance.new("Frame")
