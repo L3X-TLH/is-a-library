@@ -36,7 +36,6 @@ function Library:Frame(name)
   local CutFrame = Instance.new("Frame")
   local Container = Instance.new("Frame")
   local UIListLayout = Instance.new("UIListLayout")
-	local maxpos = UIListLayout.AbsoluteContentSize.Y
 
   Frame.Parent = TLHUI
   Frame.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
@@ -79,7 +78,7 @@ function Library:Frame(name)
   Container.BorderSizePixel = 0
   Container.ClipsDescendants = true
   Container.Position = UDim2.new(0, 0, 1, 0)
-  Container.Size = UDim2.new(1, 0, 6, maxpos)
+  Container.Size = UDim2.new(1, 0, 0, maxpos)
 
   UIListLayout.Parent = Container
   UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
@@ -126,6 +125,10 @@ function Library:Frame(name)
   update(input)
   end
   end)
+
+	local maxpos = UIListLayout.AbsoluteContentSize.Y
+
+	Container.Size = UDim2.new(1, 0, 0, maxpos)
 
   local TLHLibrary = {}
 
