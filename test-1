@@ -306,26 +306,26 @@ function Library:Frame(name)
       SliderValue.TextXAlignment = Enum.TextXAlignment.Right
 
       SliderButton.MouseButton1Down:Connect(function()
-          Value = math.floor((((tonumber(maxvalue) - tonumber(minvalue)) / 133) * SliderFrame.AbsoluteSize.X) + tonumber(minvalue)) or 0
+          Value = math.floor((((tonumber(maxvalue) - tonumber(minvalue)) / 133) * SliderLine.AbsoluteSize.X) + tonumber(minvalue)) or 0
           pcall(function()
               callback(Value)
           end)
-          SliderFrame.Size = UDim2.new(0, math.clamp(mouse.X - SliderFrame.AbsolutePosition.X, 0, 133), 0, 10)
+          SliderLine.Size = UDim2.new(0, math.clamp(mouse.X - SliderLine.AbsolutePosition.X, 0, 133), 0, 10)
           moveconnection = mouse.Move:Connect(function()
               SliderValue.Text = Value
-              Value = math.floor((((tonumber(maxvalue) - tonumber(minvalue)) / 133) * SliderFrame.AbsoluteSize.X) + tonumber(minvalue))
+              Value = math.floor((((tonumber(maxvalue) - tonumber(minvalue)) / 133) * SliderLine.AbsoluteSize.X) + tonumber(minvalue))
               pcall(function()
                   callback(Value)
               end)
-              SliderFrame.Size = UDim2.new(0, math.clamp(mouse.X - SliderFrame.AbsolutePosition.X, 0, 133), 0, 10)
+              SliderLine.Size = UDim2.new(0, math.clamp(mouse.X - SliderLine.AbsolutePosition.X, 0, 133), 0, 10)
           end)
           releaseconnection = uis.InputEnded:Connect(function(Mouse)
               if Mouse.UserInputType == Enum.UserInputType.MouseButton1 then
-                  Value = math.floor((((tonumber(maxvalue) - tonumber(minvalue)) / 133) * SliderFrame.AbsoluteSize.X) + tonumber(minvalue))
+                  Value = math.floor((((tonumber(maxvalue) - tonumber(minvalue)) / 133) * SliderLine.AbsoluteSize.X) + tonumber(minvalue))
                   pcall(function()
                       callback(Value)
                   end)
-                  SliderFrame.Size = UDim2.new(0, math.clamp(mouse.X - SliderFrame.AbsolutePosition.X, 0, 133), 0, 10)
+                  SliderLine.Size = UDim2.new(0, math.clamp(mouse.X - SliderLine.AbsolutePosition.X, 0, 133), 0, 10)
                   moveconnection:Disconnect()
                   releaseconnection:Disconnect()
               end
@@ -338,4 +338,3 @@ function Library:Frame(name)
 end
 
 return Library;
-
