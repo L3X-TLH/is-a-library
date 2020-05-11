@@ -78,7 +78,7 @@ function Library:Frame(name)
   Container.BorderSizePixel = 0
   Container.ClipsDescendants = true
   Container.Position = UDim2.new(0, 0, 1, 0)
-  Container.Size = UDim2.new(1, 0, 0, maxpos)
+  Container.Size = UDim2.new(1, 0, 0, 1)
 
   UIListLayout.Parent = Container
   UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
@@ -127,7 +127,7 @@ function Library:Frame(name)
   end)
 
 	local maxpos = UIListLayout.AbsoluteContentSize.Y
-
+	wait()
 	Container.Size = UDim2.new(1, 0, 0, maxpos)
 
   local TLHLibrary = {}
