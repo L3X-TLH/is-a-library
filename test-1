@@ -40,7 +40,7 @@ function Library:Frame(name)
   Frame.Parent = TLHUI
   Frame.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
   Frame.BorderSizePixel = 0
-  Frame.Position = UDim2.new(0.0151041448, 0, 0.0203059614, 0)
+  Frame.Position = UDim2.new(0, getNextWindowPos() + 10, 0, 10)
   Frame.Size = UDim2.new(0, 149, 0, 26)
 
   Title.Name = "Title"
