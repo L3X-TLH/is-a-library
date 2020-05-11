@@ -126,9 +126,8 @@ function Library:Frame(name)
   end
   end)
 
-	local maxpos = UIListLayout.AbsoluteContentSize.Y
-	wait(1)
-	Container.Size = UDim2.new(1, 0, 0, maxpos)
+	y = UIListLayout.AbsoluteContentSize.Y
+	Container.Size = UDim2.new(1, 0, 0, y)
 
   local TLHLibrary = {}
 
