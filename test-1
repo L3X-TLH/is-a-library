@@ -238,7 +238,7 @@ function Library:Frame(name)
         end
       end
     end)
-
+  end
     function TLHLibrary:Slider(name, minvalue, maxvalue, callback)
       minvalue = minvalue or 0
       maxvalue = maxvalue or 100
