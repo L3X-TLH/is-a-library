@@ -128,10 +128,12 @@ function Library:Frame(name)
 
 	local num = 0
 	for i, v in pairs(Container:GetChildren()) do
-		if(v.ClassName ~= "UIListLayout" and v.ClassName ~= "LocalScript") then
+		if(v.ClassName ~= "UIListLayout") then
 			num = num + v.Size.Y.Offset
 		end
 	end
+
+	Container.Size = UDim2.new(0, 149, 0, num)
 
   local TLHLibrary = {}
 
