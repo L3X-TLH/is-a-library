@@ -12,7 +12,7 @@ TLHUI.Parent = game.CoreGui
 local function getNextWindowPos()
 	local biggest = 0;
 	local ok = nil;
-	for i, v in pairs(MinecraftUI:GetChildren()) do
+	for i, v in pairs(TLHUI:GetChildren()) do
 		if v.Position.X.Offset > biggest then
 			biggest = v.Position.X.Offset
 			ok = v;
