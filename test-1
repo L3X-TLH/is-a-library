@@ -37,7 +37,7 @@ function Library:Frame(name)
   local Container = Instance.new("Frame")
   local UIListLayout = Instance.new("UIListLayout")
 
-  Frame.Parent = ScreenGui
+  Frame.Parent = TLHUI
   Frame.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
   Frame.BorderSizePixel = 0
   Frame.Position = UDim2.new(0.0151041448, 0, 0.0203059614, 0)
@@ -338,3 +338,4 @@ function Library:Frame(name)
 end
 
 return Library;
+
