@@ -64,27 +64,6 @@ function Library:Frame(name)
   Hide.Text = "-"
   Hide.TextColor3 = Color3.fromRGB(255, 255, 255)
   Hide.TextSize = 23.000
-  Hide.MouseButton1Down:connect(function()
-		if Hide.Text == "-" then
-      Hide.Text = "+"
-			Container:TweenSize(UDim2.fromScale(1, 0))
-			for _, v in pairs(Container:GetChildren()) do
-				if v:IsA("Frame") then
-					v:TweenSize(UDim2.new(1, 0, 0, 0))
-				end
-			end
-			game:GetService("TweenService"):Create(Hide, TweenInfo.new(1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out))
-		else
-      Hide.Text = "-"
-			Container:TweenSize(UDim2.fromScale(1, 1))
-			for _, v in pairs(Container:GetChildren()) do
-				if v:IsA("Frame") then
-					v:TweenSize(UDim2.new(1, 0, 0, 26))
-				end
-			end
-			game:GetService("TweenService"):Create(Hide, TweenInfo.new(1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out))
-		end
-	end)
 
   CutFrame.Name = "CutFrame"
   CutFrame.Parent = Frame
@@ -146,6 +125,13 @@ function Library:Frame(name)
   update(input)
   end
   end)
+
+	local num = 0
+	for i, v in pairs(Container:GetChildren()) do
+		if(v.ClassName ~= "UIListLayout" and v.ClassName ~= "LocalScript") then
+			num = num + v.Size.Y.Offset
+		end
+	end
 
   local TLHLibrary = {}
 
