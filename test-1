@@ -84,11 +84,9 @@ function Library:Frame(name)
   UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
   UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 
-  local script = Instance.new('LocalScript', Frame)
-
   local UserInputService = game:GetService("UserInputService")
 
-  local gui = script.Parent
+  local gui = Frame
 
   local dragging
   local dragInput
