@@ -314,12 +314,12 @@ function Library:Frame(name)
           end)
       end)
     end
+
+		y = UIListLayout.AbsoluteContentSize.Y
+		Container.Size = UDim2.new(1, 0, 0, y)
+		Container.ClipsDescendants = true
 		
   return TLHLibrary;
-
-	y = UIListLayout.AbsoluteContentSize.Y
-	Container.Size = UDim2.new(1, 0, 0, y)
-	Container.ClipsDescendants = true
 
 end
 
