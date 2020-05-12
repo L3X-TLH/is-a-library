@@ -75,10 +75,10 @@ function Library:Frame(name)
   Container.Name = "Container"
   Container.Parent = Frame
   Container.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
+	Container.BackgroundTransparency = 1.000
   Container.BorderSizePixel = 0
-  Container.ClipsDescendants = true
   Container.Position = UDim2.new(0, 0, 1, 0)
-  Container.Size = UDim2.new(1, 0, 0, 1)
+  Container.Size = UDim2.new(1, 0, 5.882, 0)
 
   UIListLayout.Parent = Container
   UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
@@ -138,7 +138,7 @@ function Library:Frame(name)
     ButtonFrame.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
     ButtonFrame.BorderSizePixel = 0
     ButtonFrame.Position = UDim2.new(-0.00671140943, 0, 0, 0)
-    ButtonFrame.Size = UDim2.new(0, 151, 0, 27)
+    ButtonFrame.Size = UDim2.new(1, 0, 0, 27)
 		
     TextButton.Parent = ButtonFrame
     TextButton.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
@@ -162,7 +162,7 @@ function Library:Frame(name)
     TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     TextLabel.BackgroundTransparency = 1.000
     TextLabel.Position = UDim2.new(0.0927152336, 0, 3.42307687, 0)
-    TextLabel.Size = UDim2.new(0, 151, 0, 26)
+    TextLabel.Size = UDim2.new(1, 0, 0, 26)
     TextLabel.Font = Enum.Font.SourceSansBold
     TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
     TextLabel.TextSize = 16.000
@@ -181,7 +181,7 @@ function Library:Frame(name)
     ToggleFrame.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
     ToggleFrame.BackgroundTransparency = 1.000
     ToggleFrame.Position = UDim2.new(-0.00671140943, 0, 0, 0)
-    ToggleFrame.Size = UDim2.new(0, 151, 0, 26)
+    ToggleFrame.Size = UDim2.new(1, 0, 0, 26)
 
     ToggleButton.Name = "ToggleButton"
     ToggleButton.Parent = ToggleFrame
@@ -242,7 +242,7 @@ function Library:Frame(name)
       SliderFrame.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
       SliderFrame.BorderSizePixel = 0
       SliderFrame.Position = UDim2.new(-0.00671140943, 0, 0.47560975, 0)
-      SliderFrame.Size = UDim2.new(0, 151, 0, 45)
+      SliderFrame.Size = UDim2.new(1, 0, 0, 45)
 
       SliderLabel.Name = "SliderLabel"
       SliderLabel.Parent = SliderFrame
@@ -315,11 +315,12 @@ function Library:Frame(name)
       end)
     end
 		
-		y = UIListLayout.AbsoluteContentSize.Y
-		Container.Size = UDim2.new(1, 0, 0, y)
-		
   return TLHLibrary;
 
 end
+
+y = UIListLayout.AbsoluteContentSize.Y
+Container.Size = UDim2.new(1, 0, 0, y)
+Container.ClipsDescendants = true
 
 return Library;
