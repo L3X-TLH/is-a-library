@@ -129,22 +129,17 @@ function Library:Frame(name)
 
   local TLHLibrary = {}
 
-	function TLHLibrary:EndFrame()
-		y = UIListLayout.AbsoluteContentSize.Y
-		Container.Size = UDim2.new(1, 0, 0, y)
-	end
-
   function TLHLibrary:Button(name, callback)
     local ButtonFrame = Instance.new("Frame")
     local TextButton = Instance.new("TextButton")
-
+		
     ButtonFrame.Name = "ButtonFrame"
     ButtonFrame.Parent = Container
     ButtonFrame.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
     ButtonFrame.BorderSizePixel = 0
     ButtonFrame.Position = UDim2.new(-0.00671140943, 0, 0, 0)
     ButtonFrame.Size = UDim2.new(0, 151, 0, 27)
-
+		
     TextButton.Parent = ButtonFrame
     TextButton.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
     TextButton.BorderSizePixel = 0
@@ -319,6 +314,10 @@ function Library:Frame(name)
           end)
       end)
     end
+		
+		y = UIListLayout.AbsoluteContentSize.Y
+		Container.Size = UDim2.new(1, 0, 0, y)
+		
   return TLHLibrary;
 
 end
