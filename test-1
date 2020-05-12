@@ -54,17 +54,6 @@ function Library:Frame(name)
   Title.TextColor3 = Color3.fromRGB(255, 255, 255)
   Title.TextSize = 24.000
 
-  Hide.Name = "Hide"
-  Hide.Parent = Frame
-  Hide.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-  Hide.BackgroundTransparency = 1.000
-  Hide.Position = UDim2.new(0.837576866, 0, 0, 0)
-  Hide.Size = UDim2.new(0, 24, 0, 24)
-  Hide.Font = Enum.Font.SourceSansBold
-  Hide.Text = "-"
-  Hide.TextColor3 = Color3.fromRGB(255, 255, 255)
-  Hide.TextSize = 23.000
-
   CutFrame.Name = "CutFrame"
   CutFrame.Parent = Frame
   CutFrame.BackgroundColor3 = Color3.fromRGB(255, 102, 0)
@@ -130,14 +119,14 @@ function Library:Frame(name)
   function TLHLibrary:Button(name, callback)
     local ButtonFrame = Instance.new("Frame")
     local TextButton = Instance.new("TextButton")
-		
+
     ButtonFrame.Name = "ButtonFrame"
     ButtonFrame.Parent = Container
     ButtonFrame.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
     ButtonFrame.BorderSizePixel = 0
     ButtonFrame.Position = UDim2.new(-0.00671140943, 0, 0, 0)
     ButtonFrame.Size = UDim2.new(1, 0, 0, 27)
-		
+
     TextButton.Parent = ButtonFrame
     TextButton.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
     TextButton.BorderSizePixel = 0
@@ -312,11 +301,7 @@ function Library:Frame(name)
           end)
       end)
     end
-		
-		wait(2)
-		y = UIListLayout.AbsoluteContentSize.Y
-		print(y)
-		
+
   return TLHLibrary;
 
 end
