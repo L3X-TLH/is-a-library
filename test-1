@@ -312,7 +312,8 @@ function Library:Frame(name)
           end)
       end)
     end
-
+		
+		wait(2)
 		y = UIListLayout.AbsoluteContentSize.Y
 		print(y)
 		
